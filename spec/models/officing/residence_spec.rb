@@ -73,7 +73,7 @@ describe Officing::Residence do
       geozone = create(:geozone)
       create(:user, document_number: "12345678Z",
                     document_type: "1",
-                    date_of_birth: Date.new(1981, 11, 30),
+                    date_of_birth: Time.zone.local(1981, 11, 30).to_date,
                     gender: 'female',
                     geozone: geozone)
 

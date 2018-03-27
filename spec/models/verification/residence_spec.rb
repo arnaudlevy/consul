@@ -105,7 +105,7 @@ describe Verification::Residence do
         user_id:         residence.user.id,
         document_number: "12345678Z",
         document_type:   "1",
-        date_of_birth:   Date.new(1980, 12, 31),
+        date_of_birth:   Time.zone.local(1980, 12, 31).to_date,
         postal_code:     "28001"
       )
     end

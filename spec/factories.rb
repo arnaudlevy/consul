@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :local_census_record, class: 'LocalCensusRecord' do
     document_number '12345678A'
     document_type 1
-    date_of_birth Date.new(1970, 1, 31)
+    date_of_birth Time.zone.local(1970, 1, 31).to_date
     postal_code '28002'
   end
 
@@ -30,7 +30,7 @@ FactoryBot.define do
       sms_confirmation_code "1234"
       document_type "1"
       document_number
-      date_of_birth Date.new(1980, 12, 31)
+      date_of_birth Time.zone.local(1980, 12, 31).to_date
       gender "female"
       geozone
     end
@@ -77,7 +77,7 @@ FactoryBot.define do
     user
     document_number
     document_type    "1"
-    date_of_birth    Date.new(1980, 12, 31)
+    date_of_birth    Time.zone.local('1980-12-31').to_date
     postal_code      "28013"
     terms_of_service '1'
 
@@ -90,7 +90,7 @@ FactoryBot.define do
     user
     document_number
     document_type 1
-    date_of_birth Date.new(1900, 1, 1)
+    date_of_birth Time.zone.local(1900, 1, 1).to_date
     postal_code '28000'
   end
 

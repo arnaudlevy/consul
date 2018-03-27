@@ -44,7 +44,7 @@ feature 'Incomplete verifications' do
     within "#user_#{incompletely_verified_user.id}" do
       expect(page).to have_content "DNI"
       expect(page).to have_content incompletely_verified_user.document_number
-      expect(page).to have_content Date.new(1900, 1, 1)
+      expect(page).to have_content Time.zone.local(1900, 1, 1).to_date
       expect(page).to have_content "28000"
     end
   end

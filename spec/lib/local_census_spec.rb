@@ -39,7 +39,7 @@ describe LocalCensus do
       response = api.call(1, "123456")
 
       expect(response).to be_valid
-      expect(response.date_of_birth).to eq(Date.new(1970, 1, 31))
+      expect(response.date_of_birth).to eq(Time.zone.local(1970, 1, 31).to_date)
     end
 
     it "returns the last failed response" do

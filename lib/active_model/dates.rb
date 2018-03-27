@@ -6,7 +6,7 @@ module ActiveModel::Dates
                        attrs["#{field}(3i)"]
 
     return nil unless day.present? && month.present? && year.present?
-    Date.new(day.to_i, month.to_i, year.to_i)
+    Time.zone.local(day.to_i, month.to_i, year.to_i).to_date
   end
 
   def remove_date(field, attrs)

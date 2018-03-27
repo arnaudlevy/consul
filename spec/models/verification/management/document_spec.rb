@@ -2,9 +2,15 @@ require 'rails_helper'
 
 describe Verification::Management::Document do
   let(:min_age)                         { User.minimum_required_age }
-  let(:over_minium_age_date_of_birth)   { Date.new((min_age + 10).years.ago.year, 12, 31) }
-  let(:under_minium_age_date_of_birth)  { Date.new(min_age.years.ago.year, 12, 31) }
-  let(:just_minium_age_date_of_birth)   { Date.new(min_age.years.ago.year, min_age.years.ago.month, min_age.years.ago.day) }
+  let(:over_minium_age_date_of_birth) do
+    Time.zone.local((min_age + 10).years.ago.year, 12, 31).to_date
+  end
+  let(:under_minium_age_date_of_birth) do
+    Time.zone.local(min_age.years.ago.year, 12, 31).to_date
+  end
+  let(:just_minium_age_date_of_birth) do
+    Time.zone.local(min_age.years.ago.year, min_age.years.ago.month, min_age.years.ago.day).to_date
+  end
 
   describe "#valid_age?" do
     it "returns false when the user is younger than the user's minimum required age" do

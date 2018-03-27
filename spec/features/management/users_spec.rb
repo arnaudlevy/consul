@@ -29,7 +29,7 @@ feature 'Users' do
     expect(user).to be_level_three_verified
     expect(user).to be_residence_verified
     expect(user).not_to be_confirmed
-    expect(user.date_of_birth).to have_content Date.new(1980, 12, 31)
+    expect(user.date_of_birth).to have_content Time.zone.local(1980, 12, 31).to_date
 
     sent_token = /.*confirmation_token=(.*)".*/.match(ActionMailer::Base.deliveries.last.body.to_s)[1]
     visit user_confirmation_path(confirmation_token: sent_token)
@@ -69,7 +69,7 @@ feature 'Users' do
     expect(user).to be_level_three_verified
     expect(user).to be_residence_verified
     expect(user).to be_confirmed
-    expect(user.date_of_birth).to have_content Date.new(1980, 12, 31)
+    expect(user.date_of_birth).to have_content Time.zone.local(1980, 12, 31).to_date
   end
 
   scenario 'Delete a level 2 user account from document verification page', :js do
